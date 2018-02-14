@@ -1,2 +1,9 @@
-# osc-project-3
+# A good name
 
+### A good mission statement
+
+## Installation
+
+## Features
+
+## FAQ!
