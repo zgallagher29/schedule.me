@@ -5,9 +5,9 @@ The objective of this open source project is to orgainze user's life events in a
 
 ## Installation ##
 * Build from Source
-* use '''node.js
-         npm install scheduleMaker
-         '''
+* '''
+npm install scheduleMaker
+'''
 * Download the current build for your plaform from the links provided below
 
 Additionally, feel free to download our Chrome Extention as well. 
