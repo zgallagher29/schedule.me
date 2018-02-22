@@ -1,7 +1,9 @@
 # CalendarMe #
 
-## What? ##
+## The Project ##
 The objective of this open source project is to orgainze user's life events in an efficient format and be able to export it to a calendar of their choice, or simply export it as a .png file. Built on Node and Electron :) 
+
+You can find a UML for this project [here](https://drive.google.com/file/d/1VGURlMbrnQOOiF6pb8DRzVJIXkPLqQsB/view?usp=sharing)
 
 ## Installation ##
 * Build from Source
@@ -20,7 +22,3 @@ Please feel free to push with additions to your own custom scheduling systems, t
 
 ## License ## 
 Apache License 2.0
-
-
-## Link to UML ## 
-https://drive.google.com/file/d/1VGURlMbrnQOOiF6pb8DRzVJIXkPLqQsB/view?usp=sharing
