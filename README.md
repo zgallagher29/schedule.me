@@ -4,11 +4,10 @@
 The objective of this open source project is to orgainze user's life events in an efficient format and be able to export it to a calendar of their choice, or simply export it as a .png file. Built on Node and Electron :) 
 
 ## Installation ##
-For now, installation has a couple of options. 
-You can: 
-*Build from Source
-*use 'npm install scheduleMaker'
-*Download the current build for your plaform from the links provided below
+For now, installation has a couple of options: 
+* Build from Source
+* use '''node.js npm install scheduleMaker'''
+* Download the current build for your plaform from the links provided below
 Additionally, feel free to download our Chrome Extention as well. 
 
 ## Features ##
@@ -23,5 +22,5 @@ Please feel free to push with additions to your own custom scheduling systems, t
 Apache License 2.0
 
 
-## Link to UML
+## Link to UML ## 
 https://drive.google.com/file/d/1VGURlMbrnQOOiF6pb8DRzVJIXkPLqQsB/view?usp=sharing
