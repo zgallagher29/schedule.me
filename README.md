@@ -1,21 +1,27 @@
-# COMPACT CHROME CALENDAR
+# CalendarMe #
 
-### A good mission statement
-The objective of this open source project is to orgainze user's life events in
-a faster and more effecient fashion.
+## What? ##
+The objective of this open source project is to orgainze user's life events in an efficient format and be able to export it to a calendar of their choice, or simply export it as a .png file. Built on Node and Electron :) 
 
-## Installation
-Chrome Extension Store Forthcoming
-## Features
-The extension will identitfy dates on a web page
-and the user can press the extension to add to
-their Google calendar.
-## Technologies Used
-React JS
-Angular
-HTML/CSS
+## Installation ##
+For now, installation has a couple of options. 
+You can: 
+*Build from Source
+*use 'npm install scheduleMaker'
+*Download the current build for your plaform from the links provided below
+Additionally, feel free to download our Chrome Extention as well. 
 
-## FAQ!
+## Features ##
+* Generate a beautiful-looking schedule
+* Grab any dates from the current webpage and add to calendar (Requires Chrome extention) 
+* Export schedule to Apple Calendar or Google Calendar 
+* Sakai Integration (Coming soon...) 
+
+Please feel free to push with additions to your own custom scheduling systems, the more the better! 
+
+## License ## 
+Apache License 2.0
+
 
 ## Link to UML
 https://drive.google.com/file/d/1VGURlMbrnQOOiF6pb8DRzVJIXkPLqQsB/view?usp=sharing
