@@ -20,6 +20,7 @@ Additionally, feel free to download our Chrome Extention as well.
 
 Please feel free to push with additions to your own custom scheduling systems, the more the better! 
 
+
 ## Contributors ## 
 This project was originally started by Riley Clarkson, Zac Gallagher, Anirrudh Krishnan, and Nora Bonifas, and is currently maintained by all of them. For any questions, contact any one of them! 
 
