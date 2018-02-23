@@ -1,0 +1,35 @@
+{
+  "name": "chrome-extension-skeleton",
+  "version": "1.0.0",
+  "description": "Skeleton Project for Chrome Extensions",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/nathanmac/chrome-extension-skeleton",
+  "bugs": "https://github.com/nathanmac/chrome-extension-skeletonissues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanmac/chrome-extension-skeleton"
+  },
+  "author": "Nathan Macnamara",
+  "license": "MIT",
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.5",
+    "browserify": "^11.0.1",
+    "event-stream": "^3.3.1",
+    "gulp": "^3.9.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jsonminify": "^1.0.0",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-minify-html": "^1.0.4",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-streamify": "^1.0.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-zip": "^3.0.2",
+    "imagemin-pngquant": "^4.1.2",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

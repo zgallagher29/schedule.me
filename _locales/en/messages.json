@@ -1,0 +1,10 @@
+{
+  "application_title": {
+    "message": "Application Title",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "application_description": {
+    "message": "Application Description",
+    "description": "The description of the application, displayed in the web store."
+  }
+}
