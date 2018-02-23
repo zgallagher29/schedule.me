@@ -1,0 +1,20 @@
+{
+  "name": "__MSG_application_title__",
+  "description": "__MSG_application_description__",
+  "version": "1.0",
+  "default_locale": "en",
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "options_page": "html/options.html",
+  "icons": {
+    "19": "images/icon_19.png",
+    "38": "images/icon_38.png",
+    "128": "images/icon_128.png"
+  },
+  "manifest_version": 2,
+  "permissions": [
+    "http://*/",
+    "https://*/"
+  ]
+}
