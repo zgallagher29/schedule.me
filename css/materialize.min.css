@@ -2439,8 +2439,9 @@ nav ul a span.badge{
 .container{
     margin:0 auto;
     max-width:1280px;
-    width:98%;
-    height: 95%
+    width:95%;
+    height: 95%;
+    margin-bottom: 10rem
 }
 @media only screen and (min-width: 601px){
     .container{
@@ -2450,7 +2451,7 @@ nav ul a span.badge{
 }
 @media only screen and (min-width: 993px){
     .container{
-        width:98%;
+        width:95%;
         height: 95%
     }
 }
@@ -2474,7 +2475,7 @@ nav ul a span.badge{
 .row{
     margin-left:auto;
     margin-right:auto;
-    margin-bottom:20px
+    margin-bottom:10px
 }
 .row:after{
     content:"";

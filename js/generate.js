@@ -4,18 +4,39 @@
 */
 
 var schedule = $('#schedule_content');
+var scheduleDayTitles = $('#schedule_day_titles');
+
 /** in the end the number of days wanted and other info should come from user input */
-var numberOfDays = 5;
 
 $(document).ready(function () {
 
     $('#schedule_title').append('<h1 class="center-align thin">My Schedule</h1>')
-    //define column size based on number of days desired
-    var colSize = numberOfDays == 5 ? "col s5ths" : "col s7ths";
+    var colSize = "col s5ths";
 
-    for (var day = 0; day < numberOfDays; day++){
+    for (var day = 0; day < 5; day++){
+
+        var dayOfWeek = "";
+
+        switch (day){
+            case 0: 
+                dayOfWeek = "Monday";
+                break;
+            case 1: 
+                dayOfWeek = "Tuesday";
+                break;
+            case 2: 
+                dayOfWeek = "Wednesday";
+                break; 
+            case 3: 
+                dayOfWeek = "Thursday";
+                break;
+            case 4: 
+                dayOfWeek = "Friday";
+                break;   
+        }
 
         //appends a column in the schedule content with id = day0, day1, etc
+        scheduleDayTitles.append('<div class="' + colSize + '" id=day' + day + 'Title><h4 class="thin">' + dayOfWeek + '</h3></div>');
         schedule.append('<div class="' + colSize + ' indigo lighten-4" id=day' + day + '></div>');
 
         var currentDay = $('#day'+day);
