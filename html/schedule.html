@@ -7,7 +7,7 @@
             <!--Import Google Icon Font-->
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <!--Import materialize.css-->
-            <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"  media="screen,projection"/>
+            <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
             <!--Let browser know website is optimized for mobile-->
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         </head>
@@ -17,14 +17,15 @@
         <!-- put the schedule in a container divided into 7 width-wise (for each day of the week) -->
         <!-- will realistically have to be generated dynamically w jquery or something -->
 
-        <div class="container" id="shcedule_container">
+        <div class="container" id="schedule_container">
 
             <div class="row" id="schedule_title">
             </div>
 
             <!-- we also need a way to assign a class to a certain point in the page height based on its start/end time -->
-
-            <div class="row" id="schedule_content">
+            <div class="center-align">
+                <div class="row" id="schedule_content">
+                </div>
             </div>
 
         </div>
@@ -32,7 +33,7 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+        <script src="../js/generate.js"></script>
     </body>
 
     </html>
