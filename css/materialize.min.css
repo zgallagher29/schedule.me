@@ -2477,6 +2477,11 @@ nav ul a span.badge{
     margin-right:auto;
     margin-bottom:10px
 }
+.row-class{
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:0px
+}
 .row:after{
     content:"";
     display:table;
