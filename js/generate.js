@@ -1,47 +1,8 @@
-    /** This file should be mostly jquery to generate a class schedule 
-     * There will have to be a way for us to get the info from the other JS files
-     * But a good start is just generating the skeleton of a 7-day grid
-    */
 
     var schedule = $('#schedule_content');
     var scheduleDayTitles = $('#schedule_day_titles');
 
-    /** in the end the number of days wanted and other info should come from user input */
-    
-    /**
-     * Credit to https://stackoverflow.com/questions/16650207/javascript-elapsed-minutes-between-two-times
-     */
-    function determineInterval(timeArray){
-        var start_time = timeArray[0];
-        var end_time = timeArray[1];
-
-        var start_hour = start_time.slice(0, -2);
-        var start_minutes = start_time.slice(-2);
-
-        var end_hour = end_time.slice(0, -2);
-        var end_minutes = end_time.slice(-2);
-
-        var startDate = new Date(0,0,0,start_hour, start_minutes);
-        var endDate = new Date(0,0,0,end_hour, end_minutes);
-
-        var millis = endDate - startDate;
-        var minutes = millis/1000/60;
-
-        return minutes/15;
-    }
-
-    /** Calls the above function to determine intervals before, during, and after class */
-    function determineIntervals(timeArray){
-
-        var class_start = timeArray[0];
-        var class_end = timeArray[1];
-
-        var btwn_8_and_start = determineInterval(["0800",timeArray[0]]);
-        var btwn_class_start_and_end = determineInterval(timeArray);
-        var btwn_end_and_10 = determineInterval([timeArray[1],"2200"]);
-
-        return ([btwn_8_and_start,btwn_class_start_and_end,btwn_end_and_10]);
-    }
+    /** In the end the number of days wanted and other info should come from user input */
 
     $(document).ready(function () {
 
@@ -119,4 +80,39 @@
         }
 
     });
+
+    /**
+     * Credit to https://stackoverflow.com/questions/16650207/javascript-elapsed-minutes-between-two-times
+     */
+    function determineInterval(timeArray){
+        var start_time = timeArray[0];
+        var end_time = timeArray[1];
+
+        var start_hour = start_time.slice(0, -2);
+        var start_minutes = start_time.slice(-2);
+
+        var end_hour = end_time.slice(0, -2);
+        var end_minutes = end_time.slice(-2);
+
+        var startDate = new Date(0,0,0,start_hour, start_minutes);
+        var endDate = new Date(0,0,0,end_hour, end_minutes);
+
+        var millis = endDate - startDate;
+        var minutes = millis/1000/60;
+
+        return minutes/15;
+    }
+
+    /** Calls the above function to determine intervals before, during, and after class */
+    function determineIntervals(timeArray){
+
+        var class_start = timeArray[0];
+        var class_end = timeArray[1];
+
+        var btwn_8_and_start = determineInterval(["0800",timeArray[0]]);
+        var btwn_class_start_and_end = determineInterval(timeArray);
+        var btwn_end_and_10 = determineInterval([timeArray[1],"2200"]);
+
+        return ([btwn_8_and_start,btwn_class_start_and_end,btwn_end_and_10]);
+    }
 
