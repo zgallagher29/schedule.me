@@ -48,6 +48,8 @@
         $('#schedule_title').append('<h1 class="center-align thin">My Schedule</h1>')
         var colSize = "col s5ths";
 
+        schedule.append('<div id="time_line_left" class="col s1"></div>');
+
         for (var day = 0; day < 5; day++){
 
             var dayOfWeek = "";
@@ -79,6 +81,25 @@
             // there are 56 15-min intervals between 8am and 10pm, add a row in each day for each interval
             for (var time = 0; time < 56; time ++){
                 currentDay.append('<div class="row" id=interval' + time + day + '></row>');
+            }
+
+        }
+
+        schedule.append('<div id="time_line_right" class="col s1"></div>');
+
+        /** put the intervals in the timelines on each side of schedule as well */
+        var time_line_left = $('#time_line_left');
+        var time_line_right = $('#time_line_right');
+
+        for (var time = 0; time < 56; time ++){
+            time_line_left.append('<div class="row" id=interval_left' + time + '></row>');
+            time_line_right.append('<div class="row" id=interval_right' + time + '></row>');
+
+            if (time%4 == 0 || time == 0){
+                var hour = 8 + (time/4);
+                $('#interval_left'+time).append('<span>'+hour+'</span>');
+                $('#interval_right'+time).append('<span>'+hour+'</span>');
+
             }
         }
 
