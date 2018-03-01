@@ -6,16 +6,36 @@
 
     $(document).ready(function () {
 
-        /** Eventually we will want this title to be editable so they can customize the schedule name */
+        /** TODO: Eventually we will want this title to be editable so they can customize the schedule name */
         $('#schedule_title').append('<h1 class="center-align thin">My Schedule</h1>');
 
-        /** Set the column size (custom for this extension) and append the left time line before adding center content */
-        var colSize = "col s5ths";
+        generateScheduleSkeleton();
+        generateTimeLines();
+        /** adds a class from 1130-1245 on TUESDAY (integer for monday is 0, tuesday is 1, etc) */
+        addClass(["1130","1245"],1);
+        addClass(["815","905"],0);
+
+    });
+
+    function addClass(timeArray,day){
+        /** Testing here. nothing permanent. */
+        var times = determineIntervals(timeArray);
+
+        for (var i = 0; i < times[1]; i++){
+            var intervalNumber = times[0]+i;
+            var intervalElement = $('#interval'+intervalNumber+day);
+            intervalElement.removeClass("row");
+            intervalElement.addClass("row-class");
+            intervalElement.append('<div class="red lighten-3">Class</div>');
+    }
+
+    }
+    function generateScheduleSkeleton(){
+        /** Append the left time line before adding center content */
         schedule.append('<div id="time_line_left" class="col s1"></div>');
 
         /** Determine the day of the week via an integer. 5 days only. */
         for (var day = 0; day < 5; day++){
-
             var dayOfWeek = "";
 
             switch (day){
@@ -35,10 +55,9 @@
                     dayOfWeek = "Friday";
                     break;   
             }
-
             /** Appends a column in the center for each day. */
-            scheduleDayTitles.append('<div class="' + colSize + '" id=day' + day + 'Title><span class="center-align thin">' + dayOfWeek + '</span></div>');
-            schedule.append('<div class="' + colSize + '" id=day' + day + '></div>');
+            scheduleDayTitles.append('<div class="col s5ths" id=day' + day + 'Title><span class="center-align thin">' + dayOfWeek + '</span></div>');
+            schedule.append('<div class="col s5ths" id=day' + day + '></div>');
 
             var currentDay = $('#day'+day);
         
@@ -47,10 +66,11 @@
                 currentDay.append('<div class="row" id=interval' + time + day + '></row>');
             }
         }
-
         /** Append the right time line after center content skeleton has been generated. */
         schedule.append('<div id="time_line_right" class="col s1"></div>');
+    }
 
+    function generateTimeLines(){
         /** Put the intervals in the timelines too so that they match up with the interval rows in each day column. */
         var time_line_left = $('#time_line_left');
         var time_line_right = $('#time_line_right');
@@ -59,28 +79,14 @@
             time_line_left.append('<div class="row" id=interval_left' + time + '></row>');
             time_line_right.append('<div class="row" id=interval_right' + time + '></row>');
 
-            /** Determine the time based on how many hours have passed by dividing by 4. Ex) its 10am because 8/4 is 2, and we start at 8am. */
-            if (time%4 == 0 || time == 0){
-                var hour = 8 + (time/4);
-                $('#interval_left'+time).append('<span>'+hour+'</span>');
-                $('#interval_right'+time).append('<span>'+hour+'</span>');
+        /** Determine the time based on how many hours have passed by dividing by 4. Ex) its 10am because 8/4 is 2, and we start at 8am. */
+        if (time%4 == 0 || time == 0){
+            var hour = 8 + (time/4);
+            $('#interval_left'+time).append('<span>'+hour+'</span>');
+            $('#interval_right'+time).append('<span>'+hour+'</span>');
             }
         }
-
-        /** Testing here. nothing permanent. */
-        var exampleArray = ["1130","1245"];
-        var times = determineIntervals(exampleArray);
-
-        for (var i = 0; i < times[1]; i++){
-            var intervalNumber = times[0]+i;
-            var intervalElement = $('#interval'+intervalNumber+'1');
-            intervalElement.removeClass("row");
-            intervalElement.addClass("row-class");
-            intervalElement.append('<div class="red lighten-3">Class</div>');
-        }
-
-    });
-
+    }
     /**
      * Credit to https://stackoverflow.com/questions/16650207/javascript-elapsed-minutes-between-two-times
      */
