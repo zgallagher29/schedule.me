@@ -1,32 +1,51 @@
 
     var schedule = $('#schedule_content');
     var scheduleDayTitles = $('#schedule_day_titles');
+    var defaultColor = "red lighten-3";
 
-    /** In the end the number of days wanted and other info should come from user input */
+/** TODO: maybe in the top right or left corner, have options so user can customize their colors and stuff */
 
     $(document).ready(function () {
 
-        /** TODO: Eventually we will want this title to be editable so they can customize the schedule name */
-        $('#schedule_title').append('<h1 class="center-align thin">My Schedule</h1>');
+        $('#schedule_title').append('<h1 href="javascript:;" contentEditable="true" class="center-align thin">My Schedule</h1>');
 
         generateScheduleSkeleton();
         generateTimeLines();
         /** adds a class from 1130-1245 on TUESDAY (integer for monday is 0, tuesday is 1, etc) */
-        addClass(["1130","1245"],1);
-        addClass(["815","905"],0);
+        var classInfo = {"name": "COMP 412","time": "11:30am - 12:45pm","location": "Cuneo 301"};
+        addClass(["1130","1245"],[1,3],classInfo);
+        classInfo = {"name": "HONR 301","time": "8:15am - 9:05am","location": "Mundelein 607"};
+        addClass(["815","905"],[0,2,4],classInfo);
 
     });
 
-    function addClass(timeArray,day){
+    function addClass(timeArray,days,info){
         /** Testing here. nothing permanent. */
         var times = determineIntervals(timeArray);
 
         for (var i = 0; i < times[1]; i++){
-            var intervalNumber = times[0]+i;
-            var intervalElement = $('#interval'+intervalNumber+day);
-            intervalElement.removeClass("row");
-            intervalElement.addClass("row-class");
-            intervalElement.append('<div class="red lighten-3">Class</div>');
+            for (var j = 0; j < days.length; j++){
+
+                var intervalNumber = times[0]+i;
+                var intervalElement = $('#interval'+intervalNumber+days[j]);
+                intervalElement.removeClass("row");
+                intervalElement.addClass("row-class");
+                if (i == 0){
+                    intervalElement.append('<div class="'+defaultColor+'">'+ info.name +'</div>');
+                }
+                else if (i == 1){
+                    intervalElement.append('<div class="'+defaultColor+'">'+ info.time +'</div>');
+                }
+                else if (i == 2){
+                    intervalElement.append('<div class="'+defaultColor+'">'+ info.location +'</div>');
+                }
+                else{
+                    intervalElement.append('<div class="'+defaultColor+'">placeholder</div>');
+                }
+                
+
+
+            }  
     }
 
     }
@@ -82,6 +101,9 @@
         /** Determine the time based on how many hours have passed by dividing by 4. Ex) its 10am because 8/4 is 2, and we start at 8am. */
         if (time%4 == 0 || time == 0){
             var hour = 8 + (time/4);
+            if (hour > 12){
+                hour -= 12;
+            }
             $('#interval_left'+time).append('<span>'+hour+'</span>');
             $('#interval_right'+time).append('<span>'+hour+'</span>');
             }
