@@ -2477,6 +2477,11 @@ nav ul a span.badge{
     margin-right:auto;
     margin-bottom:10px
 }
+.row-class{
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:0px
+}
 .row:after{
     content:"";
     display:table;
@@ -2505,7 +2510,7 @@ nav ul a span.badge{
   right: auto;
 }
 .row .col.s5ths {
-    width: 19%;
+    width: 15%;
     margin-left: .4rem;
     margin-right: .4rem
 }
