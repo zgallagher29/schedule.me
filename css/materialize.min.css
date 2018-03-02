@@ -2475,12 +2475,10 @@ nav ul a span.badge{
 .row{
     margin-left:auto;
     margin-right:auto;
-    margin-bottom:5px
+    margin-bottom:7px
 }
 .row-class{
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom:0px
+    margin-top: 2px
 }
 .row:after{
     content:"";
@@ -3665,7 +3663,9 @@ small{
     transition:-webkit-box-shadow .25s;
     transition:box-shadow .25s;
     transition:box-shadow .25s, -webkit-box-shadow .25s;
-    padding:24px;
+    padding:5px;
+    font-size: 12px;
+    width: 90%;
     margin:.5rem 0 1rem 0;
     border-radius:2px;
     background-color:#fff

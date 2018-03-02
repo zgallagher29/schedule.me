@@ -1,55 +1,23 @@
-
     var schedule = $('#schedule_content');
     var scheduleDayTitles = $('#schedule_day_titles');
     var defaultColor = "red lighten-3";
+
+    //some sample classes put into a sample array (like what we will be working with once the other part is working)
+    var classOne = {"name": "COMP 412","timeString": "11:30am - 12:45pm","time": ["1130","1245"],"days":[1,3],"location": "Cuneo 301"};
+    var classTwo = {"name": "HONR 301","timeString": "8:15am - 9:05am","time": ["815","905"], "location": "Mundelein 607","days": [0,2,4]};
+    var classes = [classOne, classTwo];
 
 /** TODO: maybe in the top right or left corner, have options so user can customize their colors and stuff */
 
     $(document).ready(function () {
 
-        $('#schedule_title').append('<h1 href="javascript:;" contentEditable="true" class="center-align thin">My Schedule</h1>');
+        $('#schedule_title').append('<h2 href="javascript:;" contentEditable="true" class="center-align thin">My Schedule</h2>');
 
-        generateScheduleSkeleton();
-        generateTimeLines();
-        /** adds a class from 1130-1245 on TUESDAY (integer for monday is 0, tuesday is 1, etc) */
-        var classInfo = {"name": "COMP 412","time": "11:30am - 12:45pm","location": "Cuneo 301"};
-        addClass(["1130","1245"],[1,3],classInfo);
-        classInfo = {"name": "HONR 301","time": "8:15am - 9:05am","location": "Mundelein 607"};
-        addClass(["815","905"],[0,2,4],classInfo);
-
+        generateSchedule();
+       
     });
 
-    function addClass(timeArray,days,info){
-        /** Testing here. nothing permanent. */
-        var times = determineIntervals(timeArray);
-
-        for (var i = 0; i < times[1]; i++){
-            for (var j = 0; j < days.length; j++){
-
-                var intervalNumber = times[0]+i;
-                var intervalElement = $('#interval'+intervalNumber+days[j]);
-                intervalElement.removeClass("row");
-                intervalElement.addClass("row-class");
-                if (i == 0){
-                    intervalElement.append('<div class="'+defaultColor+'">'+ info.name +'</div>');
-                }
-                else if (i == 1){
-                    intervalElement.append('<div class="'+defaultColor+'">'+ info.time +'</div>');
-                }
-                else if (i == 2){
-                    intervalElement.append('<div class="'+defaultColor+'">'+ info.location +'</div>');
-                }
-                else{
-                    intervalElement.append('<div class="'+defaultColor+'">placeholder</div>');
-                }
-                
-
-
-            }  
-    }
-
-    }
-    function generateScheduleSkeleton(){
+    function generateSchedule(){
         /** Append the left time line before adding center content */
         schedule.append('<div id="time_line_left" class="col s1"></div>');
 
@@ -76,30 +44,58 @@
             }
             /** Appends a column in the center for each day. */
             scheduleDayTitles.append('<div class="col s5ths" id=day' + day + 'Title><span class="center-align thin">' + dayOfWeek + '</span></div>');
-            schedule.append('<div class="col s5ths" id=day' + day + '></div>');
+            schedule.append('<div class="col s5ths" id=day' + day + '></div>');     
+            
+            for (var time = 0; time <= 56; time ++){
+                $('#day'+day).append('<div class="row" id=interval' + time + day + '></row>');
 
-            var currentDay = $('#day'+day);
-        
-            /** Adds rows in said column for each 15 minute interval during the day.  */
-            for (var time = 0; time < 56; time ++){
-                currentDay.append('<div class="row" id=interval' + time + day + '></row>');
+                if (time%4 == 0 || time == 0 ){
+                    
+                    $('#interval'+time+day).css('height','22.5px');
+                    
+                }
             }
         }
         /** Append the right time line after center content skeleton has been generated. */
         schedule.append('<div id="time_line_right" class="col s1"></div>');
+        generateTimeLines();
+
+
+        //for each day, find classes that happen
+        //calculate intervals for that class
+        //set a card panel where the time line top pos is and end it where the bottom pos is
+        for (var day = 0; day < 5; day++){
+            for (var i = 0; i < classes.length; i++){
+                if (classes[i].days.includes(day)){
+                    makeCard(classes[i],day);
+                }
+            }
+        }
+    }
+
+    function makeCard(classInfo,day){
+
+        var card_panel = $('<div id="class' + classInfo.name + '" class="card-panel ' + defaultColor + '"></div>');
+        card_panel.append('<div class="row"><div class="col s6">' + classInfo.name + '</div><div class="col s6"</div></div>');
+        card_panel.append('<span>' + classInfo.timeString + '<br/>' + classInfo.location + '</span>');
+        
+        var intervals = determineIntervals(classInfo.time);
+        $('#interval'+(intervals[0]-1)+day).append(card_panel);
+        var combined_time = intervals[0]+intervals[1];
+        
     }
 
     function generateTimeLines(){
-        /** Put the intervals in the timelines too so that they match up with the interval rows in each day column. */
+        /** Put the intervals in the timelines so that the classes can be based off their coordinates for top/bottom. */
         var time_line_left = $('#time_line_left');
         var time_line_right = $('#time_line_right');
 
-        for (var time = 0; time < 56; time ++){
+        for (var time = 0; time <= 56; time ++){
             time_line_left.append('<div class="row" id=interval_left' + time + '></row>');
             time_line_right.append('<div class="row" id=interval_right' + time + '></row>');
 
         /** Determine the time based on how many hours have passed by dividing by 4. Ex) its 10am because 8/4 is 2, and we start at 8am. */
-        if (time%4 == 0 || time == 0){
+        if (time%4 == 0 || time == 0 ){
             var hour = 8 + (time/4);
             if (hour > 12){
                 hour -= 12;
@@ -128,7 +124,7 @@
         var millis = endDate - startDate;
         var minutes = millis/1000/60;
 
-        return minutes/15;
+        return Math.round(minutes/15);
     }
 
     /** Calls the above function to determine intervals before, during, and after class */
