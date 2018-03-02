@@ -7,6 +7,7 @@
     var classTwo = {"name": "HONR 301","timeString": "8:15am - 9:05am","time": ["815","905"], "location": "Mundelein 607","days": [0,2,4]};
     var classes = [classOne, classTwo];
 
+/** TODO: we want to make this compatible with random screen sizes etc */
 /** TODO: maybe in the top right or left corner, have options so user can customize their colors and stuff */
 
     $(document).ready(function () {
@@ -43,7 +44,7 @@
                     break;   
             }
             /** Appends a column in the center for each day. */
-            scheduleDayTitles.append('<div class="col s5ths" id=day' + day + 'Title><span class="center-align thin">' + dayOfWeek + '</span></div>');
+            scheduleDayTitles.append('<div class="col s5ths" id=day' + day + 'Title><span class="center-align bold">' + dayOfWeek + '</span></div>');
             schedule.append('<div class="col s5ths" id=day' + day + '></div>');     
             
             for (var time = 0; time <= 56; time ++){
