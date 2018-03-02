@@ -11,7 +11,7 @@
 
     $(document).ready(function () {
 
-        $('#schedule_title').append('<h2 href="javascript:;" contentEditable="true" class="center-align thin">My Schedule</h2>');
+        $('#schedule_title').append('<div class="card ' + defaultColor +'" ><h2 href="javascript:;" contentEditable="true" class="center-align thin">My Schedule</h2></div>');
 
         generateSchedule();
        
