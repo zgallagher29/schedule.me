@@ -1655,9 +1655,11 @@ audio:not([controls]){
     display:none
 }
 a{
+    color: black;
     background-color:transparent
 }
-a:active,a:hover{
+a:active,a:link,a:hover{
+    color: black;
     outline:0
 }
 abbr[title]{
