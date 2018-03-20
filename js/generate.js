@@ -7,6 +7,7 @@
     var classTwo = {"name": "HONR 301","timeString": "8:15am - 9:05am","time": ["815","905"], "location": "Mundelein 607","days": [0,2,4]};
     var classes = [classOne, classTwo];
 
+/** TODO: we want to make this compatible with random screen sizes etc */
 /** TODO: maybe in the top right or left corner, have options so user can customize their colors and stuff */
 
     $(document).ready(function () {
@@ -43,7 +44,7 @@
                     break;   
             }
             /** Appends a column in the center for each day. */
-            scheduleDayTitles.append('<div class="col s5ths" id=day' + day + 'Title><span class="center-align thin">' + dayOfWeek + '</span></div>');
+            scheduleDayTitles.append('<div class="col s5ths" id=day' + day + 'Title><span class="center-align bold\    n ">' + dayOfWeek + '</span></div>');
             schedule.append('<div class="col s5ths" id=day' + day + '></div>');     
             
             for (var time = 0; time <= 56; time ++){
@@ -74,12 +75,12 @@
     }
 
     function makeCard(classInfo,day){
+        var intervals = determineIntervals(classInfo.time);
 
-        var card_panel = $('<div id="class' + classInfo.name + '" class="card-panel ' + defaultColor + '"></div>');
-        card_panel.append('<div class="row"><div class="col s6">' + classInfo.name + '</div><div class="col s6"</div></div>');
+        var card_panel = $('<div id="' + classInfo.name + day + '" class="card-panel ' + defaultColor + '"></div>');
+        card_panel.append('<div class="row"><div class="col s6">' + classInfo.name + '</div><div class="col s3"></div><div class="col s3"><a href="javascript:;" onclick="clearClass(\'interval' + (intervals[0]-1) + day + '\')"><i class="material-icons tiny">close</i></a></div></div>');
         card_panel.append('<span>' + classInfo.timeString + '<br/>' + classInfo.location + '</span>');
         
-        var intervals = determineIntervals(classInfo.time);
         $('#interval'+(intervals[0]-1)+day).append(card_panel);
         var combined_time = intervals[0]+intervals[1];
         
@@ -138,5 +139,15 @@
         var btwn_end_and_10 = determineInterval([timeArray[1],"2200"]);
 
         return ([btwn_8_and_start,btwn_class_start_and_end,btwn_end_and_10]);
+    }
+
+    function addClassPopUp(){
+        $('#modal1').modal('open');
+          
+    }
+
+    function clearClass(divID){
+        console.log(divID);
+        document.getElementById(divID).innerHTML = "";
     }
 
