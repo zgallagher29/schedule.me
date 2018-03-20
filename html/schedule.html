@@ -13,23 +13,59 @@
                 </head>
                     
             <body>
-                <!-- custom menu upon right click... -->
-                <ul class='custom-menu'>
-                    <li data-action="first">Add a class...</li>
-                </ul>
+                
                 <!-- add class popup, can be hardcoded here because its the same in every case -->
 
-                <!-- Modal Trigger -->
+                <!-- Modal Trigger (Hidden) -->
                 <a class="modal-trigger" href="#modal1"></a>
 
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal modal-fixed-footer">
                     <div class="modal-content">
                         <h4 class="center-align thin">Add Class</h4>
-                        <div id="addClassForm"></div>
+                        <div id="addClassForm" class="row">
+                            <br/>
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                            <input placeholder="Class Name" id="addclass_name" type="text" class="validate">
+                                    </div>
+                                    <div class="input-field col s6">
+                                            <input placeholder="Class Location" id="addclass_location" type="text" class="validate">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s2">
+                                        <a class="btn grey lighten-1">Monday</a>
+                                    </div>
+                                    <div class="col s3 offset-s2">
+                                        <a class="btn grey lighten-1">Wednesday</a>
+                                    </div>
+                                    <div class="col s3 offset-s2">
+                                        <a class="btn grey lighten-1">Friday</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col s4 offset-s2">
+                                            <a class="btn grey lighten-1">Tuesday</a>
+                                        </div>
+                                        <div class="col s4 offset-s1">
+                                            <a class="btn grey lighten-1">Thursday</a>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                <input placeholder="Class Start" id="addclass_starttime" type="text" class="timepicker">
+                                        </div>
+                                        <div class="input-field col s6">
+                                                <input placeholder="Class End" id="addclass_endtime" type="text" class="timepicker">
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
+                        <a href="#!" class="modal-action modal-close waves-effect grey lighten-1 btn-flat white-text">Add</a>
                     </div>
                 </div>
 
@@ -72,6 +108,11 @@
                 <script src="../js/input.js"></script>
 
             </body>
+
+            <!-- custom menu upon right click... -->
+            <ul class='custom-menu'>
+                <li data-action="first">Add a class...</li>
+            </ul>
 
             </html>
 

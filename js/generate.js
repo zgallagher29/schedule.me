@@ -12,11 +12,43 @@
 
     $(document).ready(function () {
 
+        /** Initialize materialize timepicker for when adding a class. */
+        $('.timepicker').pickatime({
+            default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+            fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+            twelvehour: true, // Use AM/PM or 24-hour format
+            donetext: 'OK', // text for done-button
+            cleartext: 'Clear', // text for clear-button
+            canceltext: 'Cancel', // Text for cancel-button
+            autoclose: false, // automatic close timepicker
+            ampmclickable: true, // make AM PM clickable
+            aftershow: function(){} //Function for after opening timepicker
+          });
+
+        /** Append the title. */
         $('#schedule_title').append('<div class="card ' + defaultColor +'" ><h2 href="javascript:;" contentEditable="true" class="center-align thin">My Schedule</h2></div>');
+        
+        /** Set some elements' color to default color. */
+        setColor(defaultColor);
 
         generateSchedule();
-       
     });
+
+    function setColor(color){
+        /** Handles the changing color of selected day buttons on the add class modal. */
+        $('.btn').click(function(){
+            if ($(this).hasClass("grey lighten-1")){
+                $(this).removeClass("grey lighten-1");
+                $(this).addClass(defaultColor);
+            }
+            else{
+                $(this).removeClass(defaultColor);
+                $(this).addClass("grey lighten-1");
+            }    
+          });
+
+
+    }
 
     function generateSchedule(){
         /** Append the left time line before adding center content */
