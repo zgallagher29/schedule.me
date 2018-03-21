@@ -40,8 +40,8 @@ $(".custom-menu li").click(function(){
         /** A case for each action. Your actions here */
         case "first": 
             /** Calls the addclasspopup function in generate.JS */
-            addClassPopUp();
-        break;
+            $('#modal1').modal('open');   
+            break;
     }
   
     /** Hide it AFTER the action was triggered */
